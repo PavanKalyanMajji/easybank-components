@@ -1,0 +1,77 @@
+loan:
+  service:
+    version: "v1"
+    name: "loans-service"
+    env: "default"
+
+# server port config
+server:
+  port: 8013
+
+spring:
+  application:
+    name: "loans-service" #Application Name Should be matched with file name that we have declared inside config server service
+  datasource:
+    url: "jdbc:mysql://localhost:3306/loansdb"
+    username: "root"
+    password: "root"
+  jpa:
+    hibernate:
+      ddlAuto: "update"
+    showSql: "true"
+  profiles:
+    active: "prod"
+  config:
+    import: "optional:configserver:http://localhost:8011/" #Property file will load from the Config Server Service
+
+#    RabbitMq Configuration
+  rabbitmq:
+    host: "localhost"
+    port: "5672"
+    username: "guest"
+    password: "guest"
+
+#    Cloud Function Configuration
+  cloud:
+    function:
+      web:
+        path: /base-endpoint
+
+#    Eureka Client Registry Config properties
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: "http://localhost:8070/eureka"
+
+#Actuator Management config
+management:
+  info:
+    build:
+      enabled: true
+    git:
+      enabled: true
+    java:
+      enabled: true
+    os:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      access: "unrestricted"
+
+info:
+  app:
+    name: "Accounts-Service"
+    description: "To maintain easy-bank accounts By using accounts microservice"
+    version: "1.0"
+
+#springdoc:
+#  swaggerUi:
+#    path: "loans/docs"
