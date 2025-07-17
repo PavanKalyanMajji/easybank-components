@@ -1,5 +1,4 @@
 # EASY-BANK
-***
 **NOTE: -** please clone and set-up locally [easybank-config-service](https://github.com/PavanKalyanMajji/easybank-config-services) & [easybank-frameworkutils](https://github.com/PavanKalyanMajji/easybank-framework-utils) first.
 
 ### Tools & Software Required: -
