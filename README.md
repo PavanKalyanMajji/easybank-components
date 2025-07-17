@@ -1,4 +1,6 @@
 # EASY-BANK
+***
+**NOTE: -** please clone and set-up locally [easybank-config-service](https://github.com/PavanKalyanMajji/easybank-config-services) & [easybank-frameworkutils](https://github.com/PavanKalyanMajji/easybank-framework-utils) first.
 
 ### Tools & Software Required: -
 1. OpenJDK 17 0r above
@@ -43,7 +45,7 @@ Loans Service Which is used to manage the loans for accounts present **Easy-Bank
   </dependencies>
 </dependencyManagement>
 ```
-- Once add the above dependency in all microservice we have to add the related RabbitMq Properties in all microservices including config service.
+- Once the above dependency added in all microservice we have to add the related rabbitMq properties in all microservices including config service.
 ```properties
 spring.rabbitmq.host=localhost
 spring.rabbitmq.port=5672
@@ -53,7 +55,7 @@ spring.rabbitmq.password=guest
 - Now properties that are need to add in only microservices (in this case **accounts** && **loans**).
 ```properties
 spring.application.name=accounts/loans #Here we have to give application name 
-spring.config.import="optional:configserver:http://localhost:9011/" #in place of configserver you have to your service name
+spring.config.import="optional:configserver:http://localhost:8011/" #in place of configserver you have to your service name
 spring.profiles.active=dev #Give profile Based on Env that you want to run it.
 ```
 - Now properties that are need to add in config service
@@ -116,11 +118,9 @@ docker image push docker.io/<UserName>/<Imagename>:<Tag>
 <plugin>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-maven-plugin</artifactId>
-		<configuration>
-			<image>
-				<name>pavan/${project.artifactId}:v6</name>
-			</image>
-		</configuration>
+	<configuration>
+		<image><name>pavan/${project.artifactId}:v6</name></image>
+	</configuration>
 </plugin>
 ```
 Then we have to execute the below commands to create an image.
